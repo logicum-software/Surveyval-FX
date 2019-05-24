@@ -3,13 +3,21 @@ package sample;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class Manager {
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Manager implements Initializable {
 
     @FXML
     public Button buttonClose;
+    private AppData appData;
 
     public void handleButtonCloseAction(ActionEvent actionEvent) {
 
@@ -17,5 +25,27 @@ public class Manager {
         Stage stage = (Stage) buttonClose.getScene().getWindow();
         // do what you have to do
         stage.close();
+    }
+
+    public void loadData() {
+
+        try {
+            try (FileInputStream fileIn = new FileInputStream("struct.dat");
+                 ObjectInputStream in = new ObjectInputStream(fileIn)) {
+                appData = (AppData) in.readObject();
+            }
+        } catch (IOException i) {
+            return;
+        } catch (ClassNotFoundException c) {
+            System.out.println("Daten konnten nicht gelesen werden.");
+            return;
+        }
+
+        System.out.printf("Serialized data is loaded from struct.dat");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
     }
 }
