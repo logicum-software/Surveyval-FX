@@ -48,4 +48,8 @@ public class Manager implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         
     }
+
+    public void handleButtonNeuerFragebogen(ActionEvent actionEvent) {
+        System.out.printf("Neuer Fragebogen geklickt.");
+    }
 }
