@@ -14,8 +14,6 @@ public class Controller {
 
     public void handleButtonAction(ActionEvent actionEvent) {
 
-        labelOutput.setText("Hello World");
-
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("Manager.fxml"));

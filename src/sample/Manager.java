@@ -3,7 +3,10 @@ package sample;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -51,5 +54,23 @@ public class Manager implements Initializable {
 
     public void handleButtonNeuerFragebogen(ActionEvent actionEvent) {
         System.out.printf("Neuer Fragebogen geklickt.");
+    }
+
+    public void handleButtonNeueFrage(ActionEvent actionEvent) {
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("NeueFrage.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Scene scene = new Scene(root, 400, 200);
+
+        Stage stage = new Stage();
+        stage.setTitle("Neue Frage");
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
 }
