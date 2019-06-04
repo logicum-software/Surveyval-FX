@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -15,6 +16,7 @@ public class NeueFrage {
 
     @FXML
     public Button buttonAbbrechen;
+    public Button buttonSpeichern;
 
     public void handleButtonAbbrechen(ActionEvent actionEvent) {
 
@@ -22,5 +24,10 @@ public class NeueFrage {
         Stage stage = (Stage) buttonAbbrechen.getScene().getWindow();
         // do what you have to do
         stage.close();
+    }
+
+    public void onTextChanged(InputMethodEvent inputMethodEvent) {
+
+        buttonSpeichern.
     }
 }
